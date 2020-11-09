@@ -12,7 +12,7 @@ var config = require('./config.js');
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-
+/*
 exports.getToken = function (user) {
     return jwt.sign(user, config.secretKey,
         { expiresIn: 3600 });
@@ -37,17 +37,7 @@ exports.jwtPassport = passport.use(new JwtStrategy(opts,
             }
         });
     }));
-
-exports.verifyUser = passport.authenticate('jwt',{session: false});
-exports.verifyAdmin = function (req, res, next) {
-    if (req.user.admin) {
-        next();
-    } else {
-        var err = new Error('You are not authorized to perform this operation');
-        err.status = 403;
-        next(err);
-    }
-}/*
+/*
 exports.facebookPassport = passport.use(new FacebookTokenStrategy({
     clientID: config.facebook.clientId,
     clientSecret: config.facebook.clientSecret
